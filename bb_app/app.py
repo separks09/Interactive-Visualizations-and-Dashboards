@@ -22,11 +22,16 @@ from flask import (
 #################################################
 app = Flask(__name__)
 
+from flask_sqlalchemy import SQLAlchemy
+app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get('DATABASE_URL', '') or 
+    "sqlite:///belly_button_biodiversity.sqlite"
+db = SQLAlchemy(app)
+
 # create route that renders index.html template
 @app.route("/")
 def home():
     """Return the dashboard homepage."""
-    return render_template("index2.html")
+    return render_template("index.html")
 
 #################################################   
 @app.route("/names")
