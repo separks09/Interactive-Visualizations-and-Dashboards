@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Belly Button Biodiversity</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+  <!--script src="static/plots.js"></script-->
+  <style>
+    /* Remove the navbar's default rounded borders and increase the bottom margin */ 
+    .navbar {
+      margin-bottom: 50px;
+      border-radius: 0;
+    }
+    
+    /* Remove the jumbotron's default bottom margin */ 
+     .jumbotron {
+      margin-bottom: 0;
+    }
+   
+    /* Add a gray background color and some padding to the footer */
+    footer {
+      background-color: #f2f2f2;
+      padding: 25px;
+    }
+  </style>
+</head>
+<body>
+
+<div class="jumbotron">
+  <div class="container text-center">
+    <h1>Belly Button Biodiversity Dashboard</h1>      
+    <p>Use these interactive charts to explore the dataset.</p>
+  </div>
+</div>
+
+<nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>                        
+      </button>
+      <a class="navbar-brand" href="#">API Routes</a>
+    </div>
+    <div class="collapse navbar-collapse" id="myNavbar">
+      <ul class="nav navbar-nav">
+        <li class="active"><a href="http://127.0.0.1:5000/names">Names</a></li>
+        <li><a href="http://127.0.0.1:5000/otu">OTUs</a></li>
+        <li><a href="http://127.0.0.1:5000/wfreq/BB_958">Wash Frequency</a></li>
+        <li><a href="http://127.0.0.1:5000/metadata/BB_958">Metadata</a></li>
+        <li><a href="http://127.0.0.1:5000/samples/BB_958">Samples</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<div class="container">    
+  <div class="row">
+    <div class="col-sm-2">
+      <div class = "row">
+        <div class="panel panel-primary">
+            <div class="panel-heading">Select Sample</div>
+            <div class="panel-body">
+              <select id="selDataset" onchange="optionChanged(this.value)">
+              </select>
+            </div>
+            <div class="panel-footer">Choose a belly button sample to change charts</div>
+        </div>
+        <div class="panel panel-primary">
+            <div class="panel-heading">Sample MetaData</div>
+            <div class="panel-body" id = "metadata"></div>
+        </div>
+       </div> 
+    </div>
+    <div class="col-sm-5"> 
+      <div class="panel panel-danger">
+        <div class="panel-heading">Bacteria in Belly Button Sample</div>
+        <div class="panel-body">
+          <div class="responsive-plot" id = "pie"></div>
+        </div>
+        <div class="panel-footer">See OTUs for description of bacteria</div>
+      </div>
+    </div>
+    <div class="col-sm-5"> 
+      <div class="panel panel-success">
+        <div class="panel-heading">Belly Button Washing Frequency</div>
+        <div class="panel-body">
+          <div class="responsive-plot" id = "xx"></div>
+        </div>
+        <div class="panel-footer"></div>
+      </div>
+    </div>
+  </div>
+</div><br><br>
+
+<footer class="container-fluid text-center">
+</footer>
+<script src="static/index.js"></script>
+</body>
+</html>
